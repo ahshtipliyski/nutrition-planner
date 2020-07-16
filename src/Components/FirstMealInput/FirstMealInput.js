@@ -7,10 +7,11 @@ export const FirstMealInput = ({firstmeal}) => {
   const [protein, setProtein] = React.useState(firstmeal.protein)
   const [carbohydrates, setCarbohydrates] = React.useState(firstmeal.carbohydrates)
   const [fat, setFat] = React.useState(firstmeal.fat)
+  const [sugar, setSugar] = React.useState(firstmeal.sugar)
 
   const onUpdate = () => {
     const db = firebase.firestore()
-    db.collection('firstmeals').doc(firstmeal.id).set({...firstmeal, name, calories, protein, carbohydrates, fat})
+    db.collection('firstmeals').doc(firstmeal.id).set({...firstmeal, name, calories, protein, carbohydrates, fat, sugar})
   }
 
   const onDelete = () => {
@@ -35,9 +36,11 @@ export const FirstMealInput = ({firstmeal}) => {
       <input value={fat} onChange={(e) => {
         setFat(e.target.value);
       }} />
+      <input value={sugar} onChange={(e) => {
+        setSugar(e.target.value);
+      }} />
       <button onClick={onUpdate}>Update</button>
       <button onClick={onDelete}>Delete</button>
-      
     </>
   )
 }

@@ -1,7 +1,10 @@
 import React from 'react';
 import FirstMeal from './Components/FirstMeal/FirstMeal';
 import firebase from 'firebase';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import Header from './Components/Header/Header';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CalorieCalclator from './Components/CalorieCalculator/CalorieCalclator';
 
 
 class App extends React.Component {
@@ -32,10 +35,20 @@ class App extends React.Component {
       <div>
         {this.state.isSignedIn ? 
         (<>
-          <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-          <img src={firebase.auth().currentUser.photoURL} alt="avatar"/>
-          <FirstMeal />
-          <button onClick={() => firebase.auth().signOut()}>Sign Out</button>
+          <Router>
+            <Header 
+            displayName={firebase.auth().currentUser.displayName}
+            photoURL={firebase.auth().currentUser.photoURL}
+            signOut={() => firebase.auth().signOut()}/> 
+            <Switch>
+              <Route exact path='/nutritiontable'>
+                <FirstMeal />
+              </Route>
+              <Route path='/caloriecalculator'>
+                <CalorieCalclator />
+              </Route>
+            </Switch>
+          </Router>
         </>)
         :
         (<StyledFirebaseAuth 
