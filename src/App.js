@@ -1,48 +1,52 @@
 import React from 'react';
-import './App.css';
-import firebase from './firebase';
-import FirstMealInput from './FirstMealInput';
+import FirstMeal from './Components/FirstMeal/FirstMeal';
+import firebase from 'firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 
 
-function App() {
+class App extends React.Component {
 
-  const [firstmeals, setFirstmeals] = React.useState([])
-  const [newMealName, setNewMealName] = React.useState()
-  const [newProtein, setNewProtein] = React.useState()
-  
-
-  React.useEffect(() => {
-      const db = firebase.firestore()
-      return db.collection('firstmeals').onSnapshot((snapshot) => {
-        const firstmealsData = []
-        snapshot.forEach(doc => firstmealsData.push(({...doc.data(), id:doc.id})))
-        setFirstmeals(firstmealsData);
-      });
-  }, []);
-
-  const onCreate = () => {
-    const db = firebase.firestore()
-    db.collection('firstmeals').add({name: newMealName, protein: newProtein})
+  state = {
+    isSignedIn: false
+  }
+  uiConfig = {
+    signInFlow: "redirect",
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    ],
+    callbacks: {
+      signInSuccess: () => false
+    }
   }
 
-  return (
-    <>
-    <div>
-      <input value={newMealName} onChange={(e) => setNewMealName(e.target.value)}/>
-      <input value={newProtein} onChange={(e) => setNewProtein(e.target.value)}/>
-      <button onClick={onCreate}>Create</button>
-      {firstmeals.map(firstmeal => (
-        <div key={firstmeal.name}>
-          <FirstMealInput firstmeal={firstmeal}/>
-        </div> 
-      ))}
-      {/* {firstmeals.map(firstmeal => (
-        <div>{firstmeal.ritual}</div>
-      ))} */}
-    </div>
-    </>
-  );
+  componentDidMount = () => {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({isSignedIn:!!user})
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.isSignedIn ? 
+        (<>
+          <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+          <img src={firebase.auth().currentUser.photoURL} alt="avatar"/>
+          <FirstMeal />
+          <button onClick={() => firebase.auth().signOut()}>Sign Out</button>
+        </>)
+        :
+        (<StyledFirebaseAuth 
+          uiConfig={this.uiConfig}
+          firebaseAuth={firebase.auth()}
+        />)
+        }
+        
+      </div>
+    )
+  }
 }
 
 export default App;
- 
