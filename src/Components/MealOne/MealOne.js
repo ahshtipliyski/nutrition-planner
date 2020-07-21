@@ -96,8 +96,12 @@ function MealOne() {
   let newSixthFat = (Math.round(((sixthItems.fat / 100) * newSixthQuantity) * 100) / 100) || 0;
   let newSixthSugar = (Math.round(((sixthItems.sugar / 100) * newSixthQuantity) * 100) / 100) || 0;
 
-  // let total = (newcalories + newSecondCalories + newThirdCalories + newForthCalories).toFixed(2)
-
+  let totalCalories = (newcalories + newSecondCalories + newThirdCalories + newForthCalories + newFifthCalories + newSixthCalories).toFixed(1)
+  let totalProtein = (newprotein + newSecondProtein + newThirdProtein + newForthProtein + newFifthProtein + newSixthProtein).toFixed(1)
+  let totalCarbohydrates = (newcarbohydrates + newSecondCarbohydrates + newThirdCarbohydrates + newForthCarbohydrates + newFifthCarbohydrates + newSixthCarbohydrates).toFixed(1)
+  let totalFat = (newfat + newSecondFat + newThirdFat + newForthFat + newFifthFat + newSixthFat).toFixed(1)
+  let totalSugar = (newsugar + newSecondSugar + newThirdSugar + newForthSugar + newFifthSugar + newSixthSugar).toFixed(1)
+  
   return (
     <div className="input">
       <div className="input__container">
@@ -207,7 +211,13 @@ function MealOne() {
           <div className="input__sugar">sugar: {newSixthSugar.toFixed(1)}</div>
         </div>
       </div>
-
+      <div>
+        <p>Total calories: {totalCalories}kcal</p>
+        <p>Total protein: {totalProtein}g</p>
+        <p>Total carbs: {totalCarbohydrates}g</p>
+        <p>Total fat: {totalFat}g</p>
+        <p>Total sugar: {totalSugar}g</p>
+      </div>
     </div>
   )
 }
