@@ -1,17 +1,68 @@
+@import '../../partials/fonts';
+@import '../../partials/variables';
+@import '../../partials/mixins';
+
 
 .nav {
-  border: 1px solid black;
-  display: flex;
-  height: 100px;
-  margin-bottom: 20px;
-  justify-content: space-between;
-  align-items: center;
+  // border-bottom: 1px solid $primary-color;
+  background-color: #FAFAFA;
+  width: 100%;
+  box-shadow: 0 2px 20px 2px rgba(32, 32, 32, 0.5);
+  position: fixed;
+  top: 0;
+  &__title {
+    margin-bottom: 0;
+    font-size: 20px;
+    color: #323232;
+    font-family: 'Avenir-Bold';
+  }
   &__logo-container {
     display: flex;
     justify-content: space-evenly;
-    width: 300px;
+    align-items: center;
+    width: 100%;
+    height: 80px;
   }
   &__logo {
-    height: 70px;
+    height: 50px;
+    padding-left: 8px; 
+  }
+  &__links {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+  }
+  &__anchor {
+    text-decoration: none;
+    color: $primary-color;
+    font-family: 'Avenir-Demi';
+    padding-bottom: 8px; 
+  }
+  &__anchor-active {
+    border-bottom: 3px solid $primary-color;
+  }
+  &__logged-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__container-right {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 24px;
+  }
+  &__container-left {
+    display: none;
+  }
+  &__user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 7px 0;
+  }
+  &__sign-out {
+    border: none;
   }
 }

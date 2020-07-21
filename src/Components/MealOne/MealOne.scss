@@ -1,0 +1,13 @@
+.input {
+  border: 1px solid black;
+  padding: 24px;
+  width: 60%;
+  background-color: #FAFAFA;
+  &__container {
+    border: 1px solid purple;
+  }
+  &__input-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

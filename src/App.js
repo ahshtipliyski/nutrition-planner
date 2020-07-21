@@ -1,10 +1,11 @@
 import React from 'react';
-import FirstMeal from './Components/FirstMeal/FirstMeal';
 import firebase from 'firebase';
+import './App.scss'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import Header from './Components/Header/Header';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import CalorieCalclator from './Components/CalorieCalculator/CalorieCalclator';
+import CalorieCalculator from './Components/CalorieCalculator/CalorieCalculator';
+import NutritionTable from './Components/NutritionTable/NutritionTable';
 
 
 class App extends React.Component {
@@ -27,6 +28,7 @@ class App extends React.Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({isSignedIn:!!user})
+      console.log(user.uid)
     })
   }
 
@@ -42,10 +44,10 @@ class App extends React.Component {
             signOut={() => firebase.auth().signOut()}/> 
             <Switch>
               <Route exact path='/nutritiontable'>
-                <FirstMeal />
+                <NutritionTable />
               </Route>
-              <Route path='/caloriecalculator'>
-                <CalorieCalclator />
+              <Route exact path='/caloriecalculator'>
+                <CalorieCalculator />
               </Route>
             </Switch>
           </Router>

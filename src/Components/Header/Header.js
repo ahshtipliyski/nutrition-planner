@@ -8,16 +8,21 @@ export default function Header({displayName, photoURL, signOut}) {
     <div className="nav">
       <div className="nav__logo-container">
         <img className="nav__logo" src={logo} alt="logo" />
-        <h2>Nutrition Planner</h2>
+        <h2 className="nav__title">Nutrition Planner</h2>
+        <div className="nav__logged-user">
+          <div className="nav__container-left">
+            <p>Logged in as:</p>
+            <p className="nav__user-name">{displayName}</p>
+          </div>
+          <div className="nav__container-right">
+            <img className="nav__user-avatar" src={photoURL} alt="avatar"/>
+            <button className="nav__sign-out" onClick={signOut}>Sign Out</button>
+          </div>
+        </div>
       </div>
       <div className="nav__links">
-        <NavLink to='/nutritiontable'>Nutrition Table</NavLink>
-        <NavLink to="/caloriecalculator">Calorie Calculator</NavLink> 
-      </div>
-      <div className="nav__logged-user">
-        <p>{displayName}</p>
-        <img src={photoURL} alt="avatar"/>
-        <button onClick={signOut}>Sign Out</button>
+        <NavLink className="nav__anchor" activeClassName="nav__anchor-active" to='/nutritiontable'>Nutrition Table</NavLink>
+        <NavLink className="nav__anchor" activeClassName="nav__anchor-active" to="/caloriecalculator">Calorie Calculator</NavLink> 
       </div>
     </div>
   )

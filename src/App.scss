@@ -1,0 +1,9 @@
+@import './partials/fonts';
+@import './partials/variables';
+@import './partials/mixins';
+
+body {
+  font-family: 'Avenir-Regular';
+  color: #FAFAFA;
+  background-color: #323232;
+}
