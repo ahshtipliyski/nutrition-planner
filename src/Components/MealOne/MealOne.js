@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from '../../firebase';
 import { uuid } from 'uuidv4';
 import './MealOne.scss'
+import Totals from '../Totals/Totals';
 
 
 function MealOne() {
@@ -19,7 +20,9 @@ function MealOne() {
   const [sixthItems, setSixthItems] = React.useState('');
   const [newSixthQuantity, setNewSixthQuantity] = React.useState();
 
-
+  // const updateCalories = (value) => {
+  //   setCalories(value)
+  // }
 
   React.useEffect(() => {
       const db = firebase.firestore()
@@ -218,6 +221,7 @@ function MealOne() {
         <p>Total fat: {totalFat}g</p>
         <p>Total sugar: {totalSugar}g</p>
       </div>
+      <Totals totalCalories={totalCalories} />    {/* updateCalories={updateCalories} */}
     </div>
   )
 }

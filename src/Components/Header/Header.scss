@@ -31,7 +31,7 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    margin-top: 20px;
+    //margin-top: 20px;
   }
   &__anchor {
     text-decoration: none;
@@ -48,7 +48,7 @@
     align-items: center;
   }
   &__container-right {
-    display: flex;
+    display: none;
     align-items: center;
     flex-direction: column;
     margin-top: 24px;

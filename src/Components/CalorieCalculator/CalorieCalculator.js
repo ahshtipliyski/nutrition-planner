@@ -8,6 +8,7 @@ export default function CalorieCalculator() {
   return (
     <div className="calculator">
       <MealOne />
+      {/* <MealOne /> */}
     </div>
   )
 }
