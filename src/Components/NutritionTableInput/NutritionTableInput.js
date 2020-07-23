@@ -31,31 +31,31 @@ export const NutritionTableInput = ({firstmeal}) => {
       </div>
       <div className="table__new-input-container">
         <p>Calories:</p>
-        <input className="table__new-input" value={calories} onChange={(e) => {
+        <input type="number" min="0" className="table__new-input" value={calories} onChange={(e) => {
           setCalories(e.target.value);
         }} />
       </div>
       <div className="table__new-input-container">
         <p>Protein:</p>
-        <input className="table__new-input" value={protein} onChange={(e) => {
+        <input type="number" min="0" className="table__new-input" value={protein} onChange={(e) => {
           setProtein(e.target.value);
         }} />
       </div>
       <div className="table__new-input-container">
         <p>Carbs:</p>
-        <input className="table__new-input" value={carbohydrates} onChange={(e) => {
+        <input type="number" min="0" className="table__new-input" value={carbohydrates} onChange={(e) => {
           setCarbohydrates(e.target.value);
         }} />
       </div>
       <div className="table__new-input-container">
         <p>Fat:</p>
-        <input className="table__new-input" value={fat} onChange={(e) => {
+        <input type="number" min="0" className="table__new-input" value={fat} onChange={(e) => {
           setFat(e.target.value);
         }} />
       </div>
       <div className="table__new-input-container">
         <p>Sugar:</p>
-        <input className="table__new-input" value={sugar} onChange={(e) => {
+        <input type="number" min="0" className="table__new-input" value={sugar} onChange={(e) => {
           setSugar(e.target.value);
         }} />
       </div>
