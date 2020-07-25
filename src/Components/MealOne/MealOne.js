@@ -6,7 +6,6 @@ import Row from '../Row/Row';
 function MealOne() {
   const [firstmeals, setFirstmeals] = React.useState([]);
   const [newQuantity, setNewQuantity] = React.useState();
-  //const [totals, setTotals] = React.useState();
   const [data, setData] = React.useState([
     {
       id: 0,
@@ -86,21 +85,36 @@ function MealOne() {
 
 
   const updateData = (newData) => {
-    console.log(newData)
     setData(newData)
   }
 
-  // const calculateNutrients = (nutrient, quantity) => {
-  //   return (Math.round(((nutrient / 100) * quantity) * 100) / 100) || 0;
-  // }
-
-  // let newCalories = calculateNutrients(calories, quantity);
-  // let newProtein = calculateNutrients(protein, quantity);
-  // let newCarbohydrates = calculateNutrients(carbohydrates, quantity);
-  // let newFat = calculateNutrients(fat, quantity);
-  // let newSugar = calculateNutrients(sugar, quantity);
+  const calculateNutrients = (nutrient, quantity) => {
+    return (Math.round(((nutrient / 100) * quantity) * 100) / 100) || 0;
+  }
 
 
+  //try to DRY
+  const totalProtein = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.protein, nutrient.quantity)
+  }, 0);
+
+  const totalCalories = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.calories, nutrient.quantity)
+  }, 0);
+
+  const totalCarbohydrates = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.carbohydrates, nutrient.quantity)
+  }, 0);
+
+  const totalFat = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.fat, nutrient.quantity)
+  }, 0);
+
+  const totalSugar = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.sugar, nutrient.quantity)
+  }, 0);
+  
+  
   return (
     <div className="input">
       {(data.map(function(nutrient, index) {
@@ -120,10 +134,16 @@ function MealOne() {
           setNewQuantity={setNewQuantity}
           setData={updateData}
           data={data}
+          calculateNutrients={calculateNutrients}
         />
         ]
         }))   
       }
+      <div>Calories: {totalCalories.toFixed(1)}</div>
+      <div>Protein: {totalProtein.toFixed(1)}</div>
+      <div>Carbs: {totalCarbohydrates.toFixed(1)}</div>
+      <div>Fat: {totalFat.toFixed(1)}</div>
+      <div>Sugar: {totalSugar.toFixed(1)}</div>
     </div>
   )
 }

@@ -1,24 +1,20 @@
 import React from 'react';
+import './Row.scss'
 
-function Row({firstmeals, id, name, calories, protein, carbohydrates, fat, sugar, newQuantity, setNewQuantity, quantity, data, setData}) {
+function Row({firstmeals, id, name, calories, protein, carbohydrates, fat, sugar, newQuantity, quantity, data, setData, calculateNutrients}) {
 
   const handleSelect = (e, id) => {
     const newData = [...data]
     newData[id] = firstmeals.find(meal => meal.name === e.target.value)
-    // console.log(newData[id])
-    // console.log(e.target.value)
     setData(newData)
   }
 
-  setNewQuantity = (e, id) => {
+  const updateNewQuantity = (e, id) => {
     const newData = [...data]
     newData[id].quantity = e.target.value
     setData(newData)
   }
 
-  const calculateNutrients = (nutrient, quantity) => {
-    return (Math.round(((nutrient / 100) * quantity) * 100) / 100) || 0;
-  }
 
   let newCalories = calculateNutrients(calories, quantity);
   let newProtein = calculateNutrients(protein, quantity);
@@ -26,6 +22,7 @@ function Row({firstmeals, id, name, calories, protein, carbohydrates, fat, sugar
   let newFat = calculateNutrients(fat, quantity);
   let newSugar = calculateNutrients(sugar, quantity);
 
+  
   return (
     <div>
       <div className="input__container">
@@ -36,7 +33,7 @@ function Row({firstmeals, id, name, calories, protein, carbohydrates, fat, sugar
           ))}
         </select>
         <div className="input__input-container">
-          <input className="input__input" name="quantity" type="number" min="0" value={newQuantity} onChange={(e) => setNewQuantity(e, id)}/>
+          <input className="input__input" name="quantity" type="number" min="0" value={newQuantity} onChange={(e) => updateNewQuantity(e, id)}/>
           <div className="input__name">Name: {name}</div>
           <div className="input__calories">calories: {newCalories}kcal</div>
           <div className="input__protein">protein: {newProtein}g</div>
