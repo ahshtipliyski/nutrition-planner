@@ -1,13 +1,15 @@
 import React from 'react';
 import './Header.scss';
 import logo from '../../Assets/Logo/logo.png'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 export default function Header({displayName, photoURL, signOut}) {
   return (
     <div className="nav">
       <div className="nav__logo-container">
-        <img className="nav__logo" src={logo} alt="logo" />
+        <Link to='/nutritiontable'>
+          <img className="nav__logo" src={logo} alt="logo" />
+        </Link>
         <h2 className="nav__title">Nutrition Planner</h2>
         <div className="nav__logged-user">
           <div className="nav__container-left">

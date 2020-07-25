@@ -78,7 +78,6 @@ function MealOne() {
       });
   }, []);
 
-
   React.useEffect(() => {
     setData(data);
   }, [data])
@@ -91,7 +90,6 @@ function MealOne() {
   const calculateNutrients = (nutrient, quantity) => {
     return (Math.round(((nutrient / 100) * quantity) * 100) / 100) || 0;
   }
-
 
   //try to DRY
   const totalProtein = data.reduce(function (accumulator, nutrient) {

@@ -1,0 +1,79 @@
+@import '../../partials/fonts';
+@import '../../partials/variables';
+@import '../../partials/mixins';
+
+.landing-page {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5) ), url('../../Assets/background/veggiestwo.jpg');
+  background-attachment: fixed;
+  height: 100vh;
+  background-size: cover;
+  color: #FAFAFA;
+  padding: 0 16px;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+  }
+  &__bottom-container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+  &__title {
+    font-family: 'Avenir-Bold';
+    text-align: center;
+    font-size: 18px;
+    margin: 30px auto;
+    @include tablet {
+      font-size: 40px;
+      margin: 70px auto;
+    }
+    @include desktop {
+      font-size: 56px;
+    }
+  }
+  &__text {
+    text-align: center;
+    font-family: 'Avenir-Demi';
+    @include tablet {
+      width: 45%;
+      font-size: 18px;
+      line-height: 26px;
+    }
+    @include desktop {
+      font-size: 23px;
+      line-height: 32px;
+    }
+  }
+  &__button {
+    text-decoration: none;
+    font-family: 'Avenir-Demi';
+    border: 1px solid #FAFAFA;
+    color: #FAFAFA;
+    padding: 10px 40px;
+    margin: 30px auto;
+    box-sizing: border-box;
+    height: 42px;
+    &:focus {
+      background-color: rgba(32, 32, 32, 0.65);
+      outline: none;
+    }
+    @include tablet {
+      margin: 0;
+    }
+    @include desktop {
+      height: 62px;
+      font-size: 22px;
+      padding: 15px 60px;
+      &:hover {
+        background-color: rgba(32, 32, 32, 0.65);
+      }
+    }
+  }
+}

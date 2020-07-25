@@ -5,10 +5,11 @@ import './CalorieCalculator.scss'
 
 
 export default function CalorieCalculator() {
+  
   return (
     <div className="calculator">
       <MealOne />
-      {/* <MealOne /> */}
+      <MealOne />
     </div>
   )
 }
