@@ -8,30 +8,66 @@
   height: auto;
   background-size: cover;
   padding: 130px 16px 16px 16px;
+  @include desktop {
+    padding: 150px 80px 64px 80px;
+  }
   &__container {
     padding: 16px 5px 10px 5px;
     margin-bottom: 16px;
     @include cards;
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  &__rows-container {
+    @include tablet {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
   }
   &__row {
     display: flex;
     align-items: center;
     padding: 2px 0;
     justify-content: center; 
+    @include tablet {
+      flex-direction: column;
+      margin: 2px 5px;
+      align-items: flex-start;
+    }
   }
   &__label {
     margin: 0;
     width: 75px;
+    @include tablet {
+      font-family: 'Avenir-Demi';
+      padding-bottom: 4px;
+    }
   }
   &__add {
     width: 67%;
     font-family: 'Avenir-Demi';
     @include input-fields;
+    @include tablet {
+      width: 100px;
+    }
+  }
+  &__food {
+    @include tablet {
+      width: 160px;
+    }
   }
   &__button-container {
     width: 100%;
     display: flex;
     justify-content: center;
+    @include tablet {
+      align-items: flex-end;
+      margin-bottom: 4px;
+    }
   }
   &__create-button {
     width: 260px;
@@ -39,12 +75,16 @@
     margin: 16px auto;
     border: none;
     font-size: 20px;
+    border-radius: 4px;
     background-color: rgb(172, 236, 172);
     color: #323232;
     outline: none;
     &:disabled {
       color: #afafaf;
       background-color: #766D69; 
+    }
+    @include tablet {
+      margin: 8px auto;
     }
   }
 }

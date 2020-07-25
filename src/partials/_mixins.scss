@@ -37,6 +37,7 @@
   margin-top: 16px;
   width: 48%;
   height: 40px;
+  border-radius: 4px;
   font-family: 'Avenir-Regular';
   font-size: 16px;
   display: flex;
@@ -44,4 +45,9 @@
   align-items: center;
   outline: none;
   border: none;
+  @include tablet {
+    height: 30px;
+    width: 100px;
+    margin-left: 6px;
+  }
 }

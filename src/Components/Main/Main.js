@@ -39,7 +39,6 @@ class Main extends React.Component {
         (<>
           <Router>
             <Header 
-              displayName={firebase.auth().currentUser.displayName}
               photoURL={firebase.auth().currentUser.photoURL}
               signOut={() => firebase.auth().signOut()}/> 
             <Switch>

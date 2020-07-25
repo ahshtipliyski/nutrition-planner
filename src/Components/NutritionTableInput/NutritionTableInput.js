@@ -25,7 +25,7 @@ export const NutritionTableInput = ({firstmeal}) => {
     <>
       <div className="table__new-input-container">
         <p>Foodtype:</p>
-        <input className="table__new-input" value={name} onChange={(e) => {
+        <input className="table__new-input table__foodtype" value={name} onChange={(e) => {
           setName(e.target.value);
         }} />
       </div>

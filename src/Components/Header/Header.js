@@ -1,9 +1,10 @@
 import React from 'react';
 import './Header.scss';
-import logo from '../../Assets/Logo/logo.png'
+import logo from '../../Assets/Logo/logo.png';
+import user from '../../Assets/icons/user.svg';
 import { NavLink, Link } from 'react-router-dom';
 
-export default function Header({displayName, photoURL, signOut}) {
+export default function Header({photoURL, signOut}) {
   return (
     <div className="nav">
       <div className="nav__logo-container">
@@ -12,12 +13,8 @@ export default function Header({displayName, photoURL, signOut}) {
         </Link>
         <h2 className="nav__title">Nutrition Planner</h2>
         <div className="nav__logged-user">
-          <div className="nav__container-left">
-            <p>Logged in as:</p>
-            <p className="nav__user-name">{displayName}</p>
-          </div>
           <div className="nav__container-right">
-            <img className="nav__user-avatar" src={photoURL} alt="avatar"/>
+            <img className="nav__user-avatar" src={photoURL || user} alt="avatar"/>
             <button className="nav__sign-out" onClick={signOut}>Sign Out</button>
           </div>
         </div>

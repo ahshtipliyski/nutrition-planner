@@ -45,36 +45,36 @@ function NutritionTable() {
     setNewSugar('');
   }
 
-  // const proteinTotal = firstmeals.reduce((totalProtein, firstmeal) => +totalProtein + +firstmeal.protein, 0);
-
   return (
     <>
       <div className="table">
         <Converter />
-        <div className="table__container">  
-          <div className="table__row">
-            <p className="table__label" htmlFor="mealname">Food:</p>
-            <input className="table__food table__add" name="mealname" value={newMealName} onChange={(e) => setNewMealName(e.target.value)}/>
-          </div>
-          <div className="table__row">
-            <p className="table__label" htmlFor="calories">Calories:</p>
-            <input type="number" min="0" className="table__calories table__add" name="calories" value={newCalories} onChange={(e) => setNewCalories(e.target.value)}/>
-          </div>
-          <div className="table__row">
-            <p className="table__label" htmlFor="protein">Protein:</p>
-            <input type="number" min="0" className="table__protein table__add" name="protein" value={newProtein} onChange={(e) => setNewProtein(e.target.value)}/>
-          </div>
-          <div className="table__row">
-            <p className="table__label" htmlFor="carbohydrates">Carbs:</p>
-            <input type="number" min="0" className="table__carbs table__add" name="carbohydrates" value={newCarbs} onChange={(e) => setNewCarbs(e.target.value)}/>
-          </div>
-          <div className="table__row">
-            <p className="table__label" htmlFor="fat">Fat:</p>
-            <input type="number" min="0" className="table__fat table__add" name="fat" value={newFats} onChange={(e) => setNewFats(e.target.value)}/>
-          </div>
-          <div className="table__row">
-            <p className="table__label" htmlFor="sugar">Sugar:</p>
-            <input type="number" min="0" className="table__sugar table__add" name="sugar" value={newSugar} onChange={(e) => setNewSugar(e.target.value)}/>
+        <div className="table__container">
+          <div className="table__rows-container">
+            <div className="table__row">
+              <p className="table__label" htmlFor="mealname">Food:</p>
+              <input className="table__food table__add" name="mealname" value={newMealName} onChange={(e) => setNewMealName(e.target.value)}/>
+            </div>
+            <div className="table__row">
+              <p className="table__label" htmlFor="calories">Calories:</p>
+              <input type="number" min="0" className="table__calories table__add" name="calories" value={newCalories} onChange={(e) => setNewCalories(e.target.value)}/>
+            </div>
+            <div className="table__row">
+              <p className="table__label" htmlFor="protein">Protein:</p>
+              <input type="number" min="0" className="table__protein table__add" name="protein" value={newProtein} onChange={(e) => setNewProtein(e.target.value)}/>
+            </div>
+            <div className="table__row">
+              <p className="table__label" htmlFor="carbohydrates">Carbs:</p>
+              <input type="number" min="0" className="table__carbs table__add" name="carbohydrates" value={newCarbs} onChange={(e) => setNewCarbs(e.target.value)}/>
+            </div>
+            <div className="table__row">
+              <p className="table__label" htmlFor="fat">Fat:</p>
+              <input type="number" min="0" className="table__fat table__add" name="fat" value={newFats} onChange={(e) => setNewFats(e.target.value)}/>
+            </div>
+            <div className="table__row">
+              <p className="table__label" htmlFor="sugar">Sugar:</p>
+              <input type="number" min="0" className="table__sugar table__add" name="sugar" value={newSugar} onChange={(e) => setNewSugar(e.target.value)}/>
+            </div>
           </div>
           <div className="table__button-container">
             <button 
@@ -90,7 +90,6 @@ function NutritionTable() {
             </div> 
           ))}
         </div>
-        {/* <div>Totel protein: {proteinTotal}</div> */}
       </div>
     </>
   );

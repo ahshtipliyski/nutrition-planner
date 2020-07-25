@@ -83,6 +83,18 @@ function MealOne() {
   }, [data])
 
 
+  React.useEffect(() => {
+    const data = localStorage.getItem("saved-data");
+    if (data) {
+      setData(JSON.parse(data));
+    }
+  }, []);
+
+  React.useEffect(() => {
+    localStorage.setItem("saved-data", JSON.stringify(data));
+  });
+
+
   const updateData = (newData) => {
     setData(newData)
   }
@@ -137,11 +149,16 @@ function MealOne() {
         ]
         }))   
       }
-      <div>Calories: {totalCalories.toFixed(1)}</div>
-      <div>Protein: {totalProtein.toFixed(1)}</div>
-      <div>Carbs: {totalCarbohydrates.toFixed(1)}</div>
-      <div>Fat: {totalFat.toFixed(1)}</div>
-      <div>Sugar: {totalSugar.toFixed(1)}</div>
+      <div className="input__totals-container">
+        <h2 className="input__totals-title">Meal totals:</h2>
+        <div className="input__totals-values">
+          <div className="input__totals-nutrient">Calories: {totalCalories.toFixed(1)}kcal</div>
+          <div className="input__totals-nutrient">Protein: {totalProtein.toFixed(1)}g</div>
+          <div className="input__totals-nutrient">Carbs: {totalCarbohydrates.toFixed(1)}g</div>
+          <div className="input__totals-nutrient">Fat: {totalFat.toFixed(1)}g</div>
+          <div className="input__totals-nutrient">Sugar: {totalSugar.toFixed(1)}g</div>
+        </div>
+      </div>
     </div>
   )
 }

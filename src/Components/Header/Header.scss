@@ -11,10 +11,13 @@
   position: fixed;
   top: 0;
   &__title {
-    margin-bottom: 0;
-    font-size: 20px;
+    margin: 10px 0 0 0;
+    font-size: 22px;
     color: #323232;
     font-family: 'Avenir-Bold';
+    @include tablet {
+      width: 75%;
+    }
   }
   &__logo-container {
     display: flex;
@@ -49,16 +52,27 @@
   }
   &__container-right {
     display: none;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 24px;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 24px;
+    }
   }
   &__container-left {
     display: none;
+    @include tablet {
+      display: flex;
+      color: #323232;
+      flex-direction: column;
+      & p {
+        margin: 0;
+      }
+    }
   }
   &__user-avatar {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     padding: 7px 0;
   }

@@ -15,11 +15,25 @@
       width: 75px;
       font-size: 14px;
     }
+    @include tablet {
+      flex-direction: column;
+      margin: 2px 3px;
+      align-items: flex-start;
+      & p {
+        font-family: 'Avenir-Demi';
+      }  
+    }
   }
   &__new-food {
     margin: 16px;
     padding: 16px 0;
     border-bottom: 2px solid #FAFAFA;
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 0;
+    }
   }
   &__new-food:last-of-type {
     border-bottom: none;
@@ -31,10 +45,24 @@
     width: 71%;
     color: #323232;
     font-family: 'Avenir-Demi';
+    @include tablet {
+      width: 100px;
+    }
+  }
+  &__foodtype {
+    @include tablet {
+      width: 160px;
+    }
   }
   &__buttons-container {
     display: flex;
     justify-content: space-between;
+    @include tablet {
+      margin-left: auto;
+      margin-top: auto;
+      margin-bottom: 4px;
+      padding-right: 6px;
+    }
   }
   &__update-button{
     @include update-buttons;

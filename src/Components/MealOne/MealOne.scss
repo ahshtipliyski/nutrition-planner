@@ -1,13 +1,22 @@
+@import '../../partials/fonts';
+@import '../../partials/variables';
+@import '../../partials/mixins';
+
 .input {
-  border: 1px solid black;
-  padding: 24px;
-  width: 60%;
-  background-color: #FAFAFA;
-  &__container {
-    border: 1px solid purple;
+  &__totals-container {
+    padding: 16px 0;
   }
-  &__input-container {
-    display: flex;
-    justify-content: space-evenly;
+  &__totals-title {
+    margin: 0;
+  }
+  &__totals-values {
+    padding-top: 8px;
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__totals-nutrient {
+    font-family: 'Avenir-Demi';
   }
 }
