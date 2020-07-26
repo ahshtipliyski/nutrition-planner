@@ -21,10 +21,11 @@
 
 @mixin input-fields {
   height: 40px;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 2px solid #e1e1e1;
   padding-left: 12px;
   box-sizing: border-box;
+  font-family: 'Avenir-Demi';
   &:focus {
     outline: none;
     border: 2px solid green;

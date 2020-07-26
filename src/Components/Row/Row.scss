@@ -35,6 +35,9 @@
       height: 40px;
       margin-right: 10px;
     }
+    @include desktop {
+      height: 30px;
+    }
   }
   &__input {
     @include input-fields;
@@ -45,6 +48,9 @@
     @include tablet {
       width: 25%;
       margin: 0;
+    }
+    @include desktop {
+      height: 30px;
     }
   }
   &__nutrients-container {

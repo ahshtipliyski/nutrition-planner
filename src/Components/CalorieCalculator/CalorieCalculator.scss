@@ -10,7 +10,10 @@
   background-size: cover;
   color: #323232;
   padding: 130px 16px 16px 16px;
+  @include tablet {
+    padding-top: 110px;
+  }
   @include desktop {
-    padding: 130px 24px 64px 24px;
+    padding: 110px 24px 64px 24px;
   }
 }

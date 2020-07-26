@@ -1,0 +1,97 @@
+@import '../../partials/fonts';
+@import '../../partials/variables';
+@import '../../partials/mixins';
+
+h2 {
+  font-size: 18px;
+  font-family: 'Avenir-Bold';
+  margin: 5px 0;
+}
+
+p {
+  margin: 10px 0;
+  @include desktop {
+    font-size: 14px;
+    margin: 6px 0;
+  }
+}
+
+span {
+  font-family: 'Avenir-Demi';
+}
+
+.formula {
+  color: #FAFAFA;
+  @include cards;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  margin: 0 0 32px 0;
+  @include tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  @include desktop {
+    width: 320px;
+    position: fixed;
+    right: 24px;
+    top: 120px;
+    padding: 11px 16px;
+  }
+  &__top-container {
+    @include tablet {
+      display: flex;
+    }
+    @include desktop {
+      flex-direction: column;
+    }
+  }
+  &__inputs-container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      padding-right: 16px;
+    }
+  }
+  &__input {
+    @include input-fields;
+    margin: 2px 0;
+    max-width: 320px;
+  }
+  &__bmr {
+    @include tablet {
+      display: flex;
+      width: 100%;
+      & h2 {
+        font-family: 'Avenir-Demi';
+      }
+      & div:first-of-type {
+        width: 210px; 
+        @include desktop {
+          width: 170px;
+        }
+      }
+    }
+    @include desktop {
+      & h2 {
+        font-size: 14px;
+      }
+    }
+  }
+  &__guide {
+    @include tablet {
+      height: 240px;
+    }
+    @include desktop {
+      height: 210px;
+    }
+  }
+  &__guide-title {
+    @include tablet {
+      margin-bottom: 26px;
+    }
+    @include desktop {
+      margin: 6px 0;
+    }
+  }
+}

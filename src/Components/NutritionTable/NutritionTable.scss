@@ -8,8 +8,11 @@
   height: auto;
   background-size: cover;
   padding: 130px 16px 16px 16px;
+  @include tablet {
+    padding-top: 110px;
+  }
   @include desktop {
-    padding: 150px 80px 64px 80px;
+    padding: 130px 80px 64px 80px;
   }
   &__container {
     padding: 16px 5px 10px 5px;
