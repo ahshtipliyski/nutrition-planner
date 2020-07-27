@@ -51,4 +51,9 @@
     width: 100px;
     margin-left: 6px;
   }
+  @include desktop {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
