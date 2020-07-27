@@ -16,7 +16,7 @@ function HBFormula() {
     <div className="formula">
       <div className="formula__top-container">
         <div className="formula__inputs-container">
-          <h2>Fill up the form to know your target.</h2>
+          <h2>Fill up the form and get your target.</h2>
           <input className="formula__input" type="number" min="0" value={weight || ''} onChange={(e) => setWeight(e.target.value)} placeholder="Weight (kg)" />
           <input className="formula__input" type="number" min="0" value={height || ''} onChange={(e) => setHeight(e.target.value)} placeholder="Height (cm)" />
           <input className="formula__input" type="number" min="0" value={age || ''} onChange={(e) => setAge(e.target.value)} placeholder="Age" />

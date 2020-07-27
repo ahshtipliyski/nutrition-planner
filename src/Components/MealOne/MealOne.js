@@ -8,13 +8,33 @@ function MealOne({
   updateData,
   newQuantity,
   setNewQuantity,
-  calculateNutrients,
-  totalProtein,
-  totalCalories,
-  totalCarbohydrates,
-  totalFat,
-  totalSugar,
 }) {
+
+  const calculateNutrients = (nutrient, quantity) => {
+    return (Math.round(((nutrient / 100) * quantity) * 100) / 100) || 0;
+  }
+
+  //try to DRY
+  const totalProtein = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.protein, nutrient.quantity)
+  }, 0);
+
+  const totalCalories = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.calories, nutrient.quantity)
+  }, 0);
+
+  const totalCarbohydrates = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.carbohydrates, nutrient.quantity)
+  }, 0);
+
+  const totalFat = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.fat, nutrient.quantity)
+  }, 0);
+
+  const totalSugar = data.reduce(function (accumulator, nutrient) {
+    return accumulator + calculateNutrients(nutrient.sugar, nutrient.quantity)
+  }, 0);
+
   return (
     <div className="input">
       {data.map(function (nutrient, index) {

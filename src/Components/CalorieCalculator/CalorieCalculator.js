@@ -69,6 +69,41 @@ export default function CalorieCalculator() {
       quantity: 0,
     },
   ]);
+  const [daily, setDaily] = React.useState([
+    {
+      id: 0,
+      totalCalories: 0,
+      totalProtein: 0,
+      totalCarbohydrates: 0,
+      totalFat: 0,
+      totalSugar: 0
+    },
+    {
+      id: 1,
+      totalCalories: 0,
+      totalProtein: 0,
+      totalCarbohydrates: 0,
+      totalFat: 0,
+      totalSugar: 0
+    },
+    {
+      id: 2,
+      totalCalories: 0,
+      totalProtein: 0,
+      totalCarbohydrates: 0,
+      totalFat: 0,
+      totalSugar: 0
+    },
+    {
+      id: 3,
+      totalCalories: 0,
+      totalProtein: 0,
+      totalCarbohydrates: 0,
+      totalFat: 0,
+      totalSugar: 0
+    }
+  ]);
+
 
   React.useEffect(() => {
     const db = firebase.firestore();
@@ -100,48 +135,27 @@ export default function CalorieCalculator() {
     setData(newData);
   };
 
-  const calculateNutrients = (nutrient, quantity) => {
-    return (Math.round(((nutrient / 100) * quantity) * 100) / 100) || 0;
-  }
 
-  //try to DRY
-  const totalProtein = data.reduce(function (accumulator, nutrient) {
-    return accumulator + calculateNutrients(nutrient.protein, nutrient.quantity)
-  }, 0);
-
-  const totalCalories = data.reduce(function (accumulator, nutrient) {
-    return accumulator + calculateNutrients(nutrient.calories, nutrient.quantity)
-  }, 0);
-
-  const totalCarbohydrates = data.reduce(function (accumulator, nutrient) {
-    return accumulator + calculateNutrients(nutrient.carbohydrates, nutrient.quantity)
-  }, 0);
-
-  const totalFat = data.reduce(function (accumulator, nutrient) {
-    return accumulator + calculateNutrients(nutrient.fat, nutrient.quantity)
-  }, 0);
-
-  const totalSugar = data.reduce(function (accumulator, nutrient) {
-    return accumulator + calculateNutrients(nutrient.sugar, nutrient.quantity)
-  }, 0);
 
   return (
     <div className="calculator">
       <HBFormula />
-      <MealOne
-        data={data}
-        updateData={updateData}
-        firstmeals={firstmeals}
-        setFirstmeals={setFirstmeals}
-        newQuantity={newQuantity}
-        setNewQuantity={setNewQuantity}
-        calculateNutrients={calculateNutrients}
-        totalProtein={totalProtein}
-        totalCalories={totalCalories}
-        totalCarbohydrates={totalCarbohydrates}
-        totalFat={totalFat}
-        totalSugar={totalSugar}
-      />
+      {daily.map(function (meal, index) {
+        return [
+          <MealOne
+            key={meal.id}
+            id={index}
+            data={data}
+            updateData={updateData}
+            firstmeals={firstmeals}
+            setFirstmeals={setFirstmeals}
+            newQuantity={newQuantity}
+            setNewQuantity={setNewQuantity}
+            // setDaily={setDaily}
+            // daily={daily}
+          />
+        ]
+      })}
     </div>
   );
 }
