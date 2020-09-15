@@ -68,6 +68,66 @@ function CalorieCalculator() {
       fat: 0,
       sugar: 0,
       quantity: 0,
+    },
+    {
+      id: 6,
+      name: "",
+      calories: 0,
+      protein: 0,
+      carbohydrates: 0,
+      fat: 0,
+      sugar: 0,
+      quantity: 0,
+    },
+    {
+      id: 7,
+      name: "",
+      calories: 0,
+      protein: 0,
+      carbohydrates: 0,
+      fat: 0,
+      sugar: 0,
+      quantity: 0,
+    },
+    {
+      id: 8,
+      name: "",
+      calories: 0,
+      protein: 0,
+      carbohydrates: 0,
+      fat: 0,
+      sugar: 0,
+      quantity: 0,
+    },
+    {
+      id: 9,
+      name: "",
+      calories: 0,
+      protein: 0,
+      carbohydrates: 0,
+      fat: 0,
+      sugar: 0,
+      quantity: 0,
+    },
+    {
+      id: 10,
+      name: "",
+      calories: 0,
+      protein: 0,
+      carbohydrates: 0,
+      fat: 0,
+      sugar: 0,
+      quantity: 0,
+    },
+    {
+      id: 11,
+      name: "",
+      calories: 0,
+      protein: 0,
+      carbohydrates: 0,
+      fat: 0,
+      sugar: 0,
+      quantity: 0,
     }
   ]);
 
@@ -96,14 +156,14 @@ function CalorieCalculator() {
   // React.useEffect(() => {
   //   localStorage.setItem("saved-data", JSON.stringify(data));
   // });
-
+ 
   
   return (
     <div className="calculator">
       <div className="calculator__container">
         <HBFormula />
         <MealOne data={data} setData={setData} firstmeals={firstmeals} />
-        {/* <MealOne /> */}
+        {/* <MealOne data={secondData} setData={setData} firstmeals={firstmeals} /> */}
       </div>
     </div>
   );
