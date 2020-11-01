@@ -7,7 +7,7 @@ import '../NutritionTableInput/NutritionTableInput.scss';
 import { uuid } from 'uuidv4';
 
 
-function NutritionTable() {
+function NutritionTable({uid}) {
 
   const [firstmeals, setFirstmeals] = React.useState([])
   const [newMealName, setNewMealName] = React.useState()
@@ -19,7 +19,7 @@ function NutritionTable() {
 
   React.useEffect(() => {
       const db = firebase.firestore()
-      return db.collection('firstmeals').onSnapshot((snapshot) => {
+      return db.collection('users').doc(uid).collection('firstmeals').onSnapshot((snapshot) => {
         const firstmealsData = []
         snapshot.forEach(doc => firstmealsData.push(({...doc.data(), id:doc.id})))
         setFirstmeals(firstmealsData);
@@ -28,7 +28,7 @@ function NutritionTable() {
 
   const onCreate = () => {
     const db = firebase.firestore()
-    db.collection('firstmeals').add({
+    db.collection('users').doc(uid).collection('firstmeals').add({
       name: newMealName, 
       calories: newCalories, 
       protein: newProtein, 
@@ -86,7 +86,7 @@ function NutritionTable() {
         <div className="table__new-food-container">
           {firstmeals.map(firstmeal => (
             <div className="table__new-food" key={firstmeal.id}>
-              <NutritionTableInput firstmeal={firstmeal}/>
+              <NutritionTableInput firstmeal={firstmeal} uid={uid}/>
             </div> 
           ))}
         </div>

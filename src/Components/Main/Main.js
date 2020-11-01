@@ -28,7 +28,16 @@ class Main extends React.Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({isSignedIn:!!user})
-      //console.log(user.uid)
+      //console.log(user)
+
+      const data = {
+        uid: user?.uid,
+        userName: user?.displayName
+      };
+      const db = firebase.firestore()
+      db.collection("users")
+      .doc(data.uid?.toString())
+      .set(data)
     })
   }
 
@@ -44,10 +53,10 @@ class Main extends React.Component {
             <Switch>
               <Redirect exact from='/' to='/nutritiontable' />
               <Route exact path='/nutritiontable'>
-                <NutritionTable />
+                <NutritionTable uid={firebase.auth().currentUser.uid}/>
               </Route>
               <Route exact path='/caloriecalculator'>
-                <CalorieCalculator />
+                <CalorieCalculator uid={firebase.auth().currentUser.uid}/>
               </Route>
             </Switch>
           </Router>

@@ -3,14 +3,14 @@ import MealOne from "../MealOne/MealOne";
 import "./CalorieCalculator.scss";
 import HBFormula from "../HBFormula/HBFormula";
 import firebase from "../../firebase";
+import { uuid } from 'uuidv4';
 
 
-
-function CalorieCalculator() {
+function CalorieCalculator({ uid }) {
   const [firstmeals, setFirstmeals] = React.useState([]);
   const [data, setData] = React.useState([
     {
-      id: 0,
+      id: uuid(),
       name: "",
       calories: 0,
       protein: 0,
@@ -20,7 +20,7 @@ function CalorieCalculator() {
       quantity: 0,
     },
     {
-      id: 1,
+      id: uuid(),
       name: "",
       calories: 0,
       protein: 0,
@@ -30,7 +30,7 @@ function CalorieCalculator() {
       quantity: 0,
     },
     {
-      id: 2,
+      id: uuid(),
       name: "",
       calories: 0,
       protein: 0,
@@ -40,7 +40,7 @@ function CalorieCalculator() {
       quantity: 0,
     },
     {
-      id: 3,
+      id: uuid(),
       name: "",
       calories: 0,
       protein: 0,
@@ -50,7 +50,7 @@ function CalorieCalculator() {
       quantity: 0,
     },
     {
-      id: 4,
+      id: uuid(),
       name: "",
       calories: 0,
       protein: 0,
@@ -60,67 +60,7 @@ function CalorieCalculator() {
       quantity: 0,
     },
     {
-      id: 5,
-      name: "",
-      calories: 0,
-      protein: 0,
-      carbohydrates: 0,
-      fat: 0,
-      sugar: 0,
-      quantity: 0,
-    },
-    {
-      id: 6,
-      name: "",
-      calories: 0,
-      protein: 0,
-      carbohydrates: 0,
-      fat: 0,
-      sugar: 0,
-      quantity: 0,
-    },
-    {
-      id: 7,
-      name: "",
-      calories: 0,
-      protein: 0,
-      carbohydrates: 0,
-      fat: 0,
-      sugar: 0,
-      quantity: 0,
-    },
-    {
-      id: 8,
-      name: "",
-      calories: 0,
-      protein: 0,
-      carbohydrates: 0,
-      fat: 0,
-      sugar: 0,
-      quantity: 0,
-    },
-    {
-      id: 9,
-      name: "",
-      calories: 0,
-      protein: 0,
-      carbohydrates: 0,
-      fat: 0,
-      sugar: 0,
-      quantity: 0,
-    },
-    {
-      id: 10,
-      name: "",
-      calories: 0,
-      protein: 0,
-      carbohydrates: 0,
-      fat: 0,
-      sugar: 0,
-      quantity: 0,
-    },
-    {
-      id: 11,
+      id: uuid(),
       name: "",
       calories: 0,
       protein: 0,
@@ -131,9 +71,10 @@ function CalorieCalculator() {
     }
   ]);
 
+  
   React.useEffect(() => {
     const db = firebase.firestore();
-    return db.collection("firstmeals").onSnapshot((snapshot) => {
+    return db.collection('users').doc(uid).collection("firstmeals").onSnapshot((snapshot) => {
       const firstmealsData = [];
       snapshot.forEach((doc) =>
         firstmealsData.push({ ...doc.data(), id: doc.id })
@@ -156,14 +97,12 @@ function CalorieCalculator() {
   // React.useEffect(() => {
   //   localStorage.setItem("saved-data", JSON.stringify(data));
   // });
- 
-  
   return (
     <div className="calculator">
       <div className="calculator__container">
         <HBFormula />
-        <MealOne data={data} setData={setData} firstmeals={firstmeals} />
-        {/* <MealOne data={secondData} setData={setData} firstmeals={firstmeals} /> */}
+        <MealOne data={data} setData={setData} firstmeals={firstmeals}/>
+        
       </div>
     </div>
   );
